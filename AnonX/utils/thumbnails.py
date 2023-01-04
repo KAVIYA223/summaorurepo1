@@ -74,7 +74,7 @@ async def gen_thumb(videoid, user_id):
         xy = Image.open(wxy)
         a = Image.new('L', [640, 640], 0)
         b = ImageDraw.Draw(a)
-        b.pieslice([(0, 0), (640,640)], 0, 360, fill = 255, outline = "white")
+        b.pieslice([(0, 0), (640,640)], 0, 360, fill = 1, outline = "white")
         c = np.array(xy)
         d = np.array(a)
         e = np.dstack((c, d))
@@ -83,13 +83,13 @@ async def gen_thumb(videoid, user_id):
 
         youtube = Image.open(f"cache/thumb{videoid}.png")
         bg = Image.open(f"AnonX/assets/anonx.png")
-        image1 = changeImageSize(1100, 770, youtube)
+        image1 = changeImageSize(1280, 7200, youtube)
         image2 = image1.convert("RGBA")
         background = image2.filter(filter=ImageFilter.BoxBlur(30))
         enhancer = ImageEnhance.Brightness(background)
-        background = enhancer.enhance(0.6)
+        background = enhancer.enhance(0.8)
 
-        image3 = changeImageSize(1100, 770, bg)
+        image3 = changeImageSize(1289, 720, bg)
         image5 = image3.convert("RGBA")
         Image.alpha_composite(background, image5).save(f"cache/temp{videoid}.png")
 
@@ -127,7 +127,7 @@ async def gen_thumb(videoid, user_id):
                 (450, 25),
                 f"STARTED PLAYING",
                 fill="white",
-                stroke_width=3,
+                stroke_width=1,
                 stroke_fill="grey",
                 font=font,
             )
