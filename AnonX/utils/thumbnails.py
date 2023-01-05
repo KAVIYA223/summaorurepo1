@@ -85,9 +85,9 @@ async def gen_thumb(videoid, user_id):
         bg = Image.open(f"AnonX/assets/anonx.png")
         image1 = changeImageSize(1280, 720, youtube)
         image2 = image1.convert("RGBA")
-        background = image2.filter(filter=ImageFilter.BoxBlur(23))
+        background = image2.filter(filter=ImageFilter.BoxBlur(20))
         enhancer = ImageEnhance.Brightness(background)
-        background = enhancer.enhance(0.8)
+        background = enhancer.enhance(0.9)
 
         image3 = changeImageSize(1280, 720, bg)
         image5 = image3.convert("RGBA")
@@ -127,8 +127,8 @@ async def gen_thumb(videoid, user_id):
                 (450, 25),
                 f"STARTED PLAYING",
                 fill="white",
-                stroke_width=3,
-                stroke_fill="grey",
+                stroke_width=1,
+                stroke_fill="white",
                 font=font,
             )
             if para[0]:
